@@ -84,7 +84,28 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-        </plugins>
+
+            <!-- 注意：此处要放在plugins下面，不要放到pluginManagements中 -->
+                <!-- Jacoco插件，Offline Instrumentation -->
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.7</version>
+                    <executions>
+                        <!--注意：此处配置主要是为了解决mdp框架中已经引入jacoco maven插件导致的问题的，如果你没有引入mdp框架，则可以不用这段 begin -->
+                        <execution>
+                            <id>prepare-agent</id>
+                        </execution>
+                        <!--注意：此处配置主要是为了解决mdp框架中已经引入jacoco maven插件导致的问题的，如果你没有引入mdp框架，则可以不用这段 end -->
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.2</version>
+                </plugin>
+            </plugins>
+
     </build>
 
 </project>
