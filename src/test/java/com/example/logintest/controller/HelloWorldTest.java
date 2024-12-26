@@ -12,4 +12,9 @@ public class HelloWorldTest {
         HelloWorld helloWorld = new HelloWorld();
         helloWorld.say();
     }
+    @Test
+    public void test1(){
+        HelloWorld helloWorld = new HelloWorld();
+        helloWorld.say();
+    }
 }
