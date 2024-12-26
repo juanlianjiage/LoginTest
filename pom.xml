@@ -92,11 +92,21 @@
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>0.8.7</version>
                     <executions>
-                        <!--注意：此处配置主要是为了解决mdp框架中已经引入jacoco maven插件导致的问题的，如果你没有引入mdp框架，则可以不用这段 begin -->
+                        <!-- 准备阶段，为测试运行添加Jacoco代理 -->
                         <execution>
                             <id>prepare-agent</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
                         </execution>
-                        <!--注意：此处配置主要是为了解决mdp框架中已经引入jacoco maven插件导致的问题的，如果你没有引入mdp框架，则可以不用这段 end -->
+                        <!-- 报告阶段，生成覆盖率报告 -->
+                        <execution>
+                            <id>report</id>
+                            <phase>prepare-package</phase> <!-- 可以在test、verify等阶段执行，根据需要选择 -->
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
                     </executions>
                 </plugin>
                 <plugin>
